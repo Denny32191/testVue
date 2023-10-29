@@ -3,10 +3,10 @@
     <Logomain />
     <div class="maincontent">
       <div class="menu">
-      <SearchBar />
-      <UserList />
+      <SearchBar @userSelected="selectUser" />
+      <UserList  />
       </div>
-      <UserProfile/>
+      <UserProfile :user="selectedUser" v-if="selectedUser" />
     </div>
     
   </div>
@@ -28,10 +28,21 @@ export default {
     UserProfile
 
   },
+  data() {
+    return {
+      selectedUser: null
+    };
+  },
+  methods: {
+    selectUser(user) {
+      this.selectedUser = user;
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,600;1,500;1,700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap');
 .maincontent {
   border-radius: 10px;
   min-width: 1266px;
